@@ -1,4 +1,4 @@
-package com.danke.android.maven.publish;
+package com.danke.gradle.maven.publish;
 
 import org.gradle.api.Project
 

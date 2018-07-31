@@ -1,4 +1,4 @@
-package com.danke.android.maven.publish.sample.jvm;
+package com.danke.gradle.maven.publish.sample.jvm;
 
 public class JvmSample {
     public static void hello() {

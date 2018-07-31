@@ -1,4 +1,4 @@
-package com.danke.android.maven.publish.sample.android;
+package com.danke.gradle.maven.publish.sample.android;
 
 public class AndroidSample {
     public static void hello() {

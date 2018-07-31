@@ -18,7 +18,7 @@ buildscript {
     }
     
     dependencies {
-        classpath 'com.danke.android:maven-publish:<latest-version>'
+        classpath 'com.danke.gradle:maven-publish:<latest-version>'
     }
 }
 ```
@@ -26,7 +26,7 @@ Use the `publish` closure to set the configurations of your package in the `buil
 
 ``` groovy
 // must be applied after your artifact generating plugin (eg. java-library / com.android.library)
-apply plugin: 'com.danke.android.maven-publish'
+apply plugin: 'com.danke.gradle.maven-publish'
 
 publish {
     packaging = POM_PACKAGING
