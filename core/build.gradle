@@ -10,3 +10,5 @@ compileGroovy {
     sourceCompatibility = '1.8'
     targetCompatibility = '1.8'
 }
+
+apply from: 'https://raw.githubusercontent.com/danke77/bintray/master/bintray-jvm.gradle'
