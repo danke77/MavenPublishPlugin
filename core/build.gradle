@@ -1,0 +1,12 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    implementation localGroovy()
+    implementation gradleApi()
+}
+
+compileGroovy {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
