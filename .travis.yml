@@ -1,4 +1,4 @@
-language: groovy
+language: android
 
 notifications:
   # 关闭邮件通知
@@ -15,6 +15,41 @@ matrix:
     - jdk: oraclejdk9
     - jdk: oraclejdk8
 
+env:
+  global:
+    - ANDROID_TARGET=27
+    - ANDROID_COMPILE=27
+    - ANDROID_BUILD_TOOLS_VERSION=27.0.3
+
+android:
+  components:
+    # Uncomment the lines below if you want to
+    # use the latest revision of Android SDK Tools
+    - platform-tools
+    # https://github.com/travis-ci/travis-ci/issues/6040#issuecomment-219367943
+    - tools
+    - tools
+
+    # The BuildTools version used by your project
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+
+    # The SDK version used to compile your project
+    - android-$ANDROID_COMPILE
+
+    # Additional components
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository # Android Support Repository
+    - extra-android-support # Support Library
+    - extra
+
+    # Specify at least one system image,
+    # if you need to run emulator(s) during your tests
+    # - sys-img-armeabi-v7a-android-27
+    # - sys-img-x86-android-27
+  licenses:
+    - android-sdk-license-.+
+
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -23,6 +58,7 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
 
 before_install:
   - chmod +x gradlew
@@ -34,7 +70,7 @@ before_script:
     unset _JAVA_OPTIONS
 
 script:
-  - ./gradlew :core:clean :core:build
+  - ./gradlew clean build
 
 after_script:
 
