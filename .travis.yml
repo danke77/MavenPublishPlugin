@@ -1,0 +1,45 @@
+language: groovy
+
+notifications:
+  # 关闭邮件通知
+  email: false
+
+# set sudo required for non-container vm with more mem even though we don't need sudo
+# https://docs.travis-ci.com/user/reference/overview/
+sudo: required
+dist: trusty
+
+matrix:
+  include:
+    - jdk: openjdk10
+    - jdk: oraclejdk9
+    - jdk: oraclejdk8
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+before_install:
+  - chmod +x gradlew
+
+install: true
+
+before_script:
+  - |
+    unset _JAVA_OPTIONS
+
+script:
+  - ./gradlew clean build
+
+after_script:
+
+after_failure:
+
+# or
+
+after_success:
