@@ -1,0 +1,9 @@
+apply plugin: 'groovy'
+
+sourceSets {
+    main {
+        groovy {
+            srcDir '../core/src/main/groovy'
+        }
+    }
+}
