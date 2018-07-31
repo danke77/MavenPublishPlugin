@@ -34,7 +34,7 @@ before_script:
     unset _JAVA_OPTIONS
 
 script:
-  - ./gradlew clean build
+  - ./gradlew :core:clean :core:build
 
 after_script:
 
