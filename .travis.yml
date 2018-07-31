@@ -9,11 +9,7 @@ notifications:
 sudo: required
 dist: trusty
 
-matrix:
-  include:
-    - jdk: openjdk10
-    - jdk: oraclejdk9
-    - jdk: oraclejdk8
+jdk: oraclejdk8
 
 env:
   global:
