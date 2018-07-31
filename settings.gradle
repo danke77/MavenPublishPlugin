@@ -1,2 +1,2 @@
-include ':core'
+include ':core', ':sample-android'
 rootProject.name = 'MavenPublishPlugin'

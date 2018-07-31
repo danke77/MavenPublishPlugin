@@ -1,0 +1,44 @@
+import com.danke.android.maven.publish.PublishPlugin
+
+apply plugin: 'com.android.library'
+// apply plugin: 'com.danke.android.maven-publish'
+apply plugin: PublishPlugin
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName '1.0.0'
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+}
+
+project.archivesBaseName = POM_ARTIFACT_ID + '-' + POM_VERSION_NAME
+
+def USERNAME = ''
+def PASSWORD = ''
+
+File localPropertiesFile = new File("${rootProject.projectDir}/local.properties")
+if (localPropertiesFile.exists()) {
+    Properties properties = new Properties()
+    properties.load(localPropertiesFile.newDataInputStream())
+
+    USERNAME = properties.getProperty('maven.username')
+    PASSWORD = properties.getProperty('maven.password')
+}
+
+publish {
+    packaging = POM_PACKAGING
+    groupId = POM_GROUP_ID
+    artifactId = POM_ARTIFACT_ID
+    publishVersion = POM_VERSION_NAME
+    localMaven = LOCAL_MAVEN
+    username = USERNAME
+    password = PASSWORD
+}
