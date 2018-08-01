@@ -27,6 +27,7 @@ class PublishExtension {
 
     boolean localMaven = false
     boolean uploadSourcesJar = true
+    boolean withPomDependencies = true
 
     @PackageScope
     void validate(Project project) {

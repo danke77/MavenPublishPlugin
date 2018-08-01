@@ -52,6 +52,11 @@ class PublishPlugin implements Plugin<Project> {
                         pom.version = extension.publishVersion
                         pom.groupId = extension.groupId
                         pom.artifactId = extension.artifactId
+
+                        Utils.removeDependencies(pom)
+                        if (extension.withPomDependencies) {
+                            Utils.addDependencies(pom, project)
+                        }
                     }
                 }
             } else {
@@ -68,6 +73,11 @@ class PublishPlugin implements Plugin<Project> {
                         pom.version = extension.publishVersion
                         pom.groupId = extension.groupId
                         pom.artifactId = extension.artifactId
+
+                        Utils.removeDependencies(pom)
+                        if (extension.withPomDependencies) {
+                            Utils.addDependencies(pom, project)
+                        }
                     }
                 }
             }
