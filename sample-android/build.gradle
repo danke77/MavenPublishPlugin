@@ -16,7 +16,13 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation('com.android.support:appcompat-v7:27.1.1') {
+        transitive = false
+    }
+    compile 'com.android.support:support-fragment:27.1.1'
+    api 'com.android.support:support-compat:27.1.1'
+    compileOnly 'com.android.support:support-core-ui:27.1.1'
+    runtimeOnly 'com.android.support:support-core-utils:27.1.1'
 }
 
 project.archivesBaseName = POM_ARTIFACT_ID + '-' + POM_VERSION_NAME

@@ -62,6 +62,7 @@ $ ./gradlew clean build :your-library:uploadArchives
 | snapshotRepositoryUrl | true | |
 | localMaven | false | false |
 | uploadSourcesJar | false | true |
+| withPomDependencies | false | true |
 
 ## Contribution
 
