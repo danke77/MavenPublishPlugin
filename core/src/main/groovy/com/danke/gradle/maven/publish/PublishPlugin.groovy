@@ -45,41 +45,37 @@ class PublishPlugin implements Plugin<Project> {
     private void publish(Project project, PublishExtension extension) {
         project.uploadArchives {
             if (extension.localMaven) {
-                repositories {
-                    mavenDeployer {
-                        snapshotRepository(url: extension.snapshotRepositoryUrl)
-                        repository(url: extension.repositoryUrl)
+                repositories.mavenDeployer {
+                    snapshotRepository(url: extension.snapshotRepositoryUrl)
+                    repository(url: extension.repositoryUrl)
 
-                        pom.packaging = extension.packaging
-                        pom.version = extension.publishVersion
-                        pom.groupId = extension.groupId
-                        pom.artifactId = extension.artifactId
+                    pom.packaging = extension.packaging
+                    pom.version = extension.publishVersion
+                    pom.groupId = extension.groupId
+                    pom.artifactId = extension.artifactId
 
-                        Utils.removeDependencies(pom)
-                        if (extension.withPomDependencies) {
-                            Utils.addDependencies(pom, project)
-                        }
+                    Utils.removeDependencies(pom)
+                    if (extension.withPomDependencies) {
+                        Utils.addDependencies(pom, project)
                     }
                 }
             } else {
-                repositories {
-                    mavenDeployer {
-                        snapshotRepository(url: extension.snapshotRepositoryUrl) {
-                            authentication(userName: extension.username, password: extension.password)
-                        }
-                        repository(url: extension.repositoryUrl) {
-                            authentication(userName: extension.username, password: extension.password)
-                        }
+                repositories.mavenDeployer {
+                    snapshotRepository(url: extension.snapshotRepositoryUrl) {
+                        authentication(userName: extension.username, password: extension.password)
+                    }
+                    repository(url: extension.repositoryUrl) {
+                        authentication(userName: extension.username, password: extension.password)
+                    }
 
-                        pom.packaging = extension.packaging
-                        pom.version = extension.publishVersion
-                        pom.groupId = extension.groupId
-                        pom.artifactId = extension.artifactId
+                    pom.packaging = extension.packaging
+                    pom.version = extension.publishVersion
+                    pom.groupId = extension.groupId
+                    pom.artifactId = extension.artifactId
 
-                        Utils.removeDependencies(pom)
-                        if (extension.withPomDependencies) {
-                            Utils.addDependencies(pom, project)
-                        }
+                    Utils.removeDependencies(pom)
+                    if (extension.withPomDependencies) {
+                        Utils.addDependencies(pom, project)
                     }
                 }
             }
