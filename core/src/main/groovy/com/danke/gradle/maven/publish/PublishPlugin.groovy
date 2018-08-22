@@ -14,7 +14,9 @@ class PublishPlugin implements Plugin<Project> {
         final PublishExtension extension = project.extensions.create('publish', PublishExtension)
         project.afterEvaluate {
             extension.validate(project)
-            project.apply([plugin: 'maven'])
+            if (!project.plugins.hasPlugin('maven')) {
+                project.apply([plugin: 'maven'])
+            }
             attachArtifacts(extension, project)
             publish(project, extension)
         }
