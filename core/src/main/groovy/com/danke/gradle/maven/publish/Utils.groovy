@@ -45,10 +45,24 @@ static def addDependencies(MavenPom pom, Project project) {
         }
 
         // addDependency(project.configurations.compile, 'compile')
-        // addDependency(project.configurations.api, 'compile')
-        addDependency(project.configurations.implementation, 'compile')
-        addDependency(project.configurations.compileOnly, 'provided')
-        addDependency(project.configurations.runtimeOnly, 'runtime')
+        // if (project.configurations.findByName('api') != null) {
+        //     addDependency(project.configurations.api, 'compile')
+        // }
+        if (project.configurations.findByName('implementation') != null) {
+            addDependency(project.configurations.implementation, 'compile')
+        }
+        if (project.configurations.findByName('compileOnly') != null) {
+            addDependency(project.configurations.compileOnly, 'provided')
+        }
+        if (project.configurations.findByName('runtimeOnly') != null) {
+            addDependency(project.configurations.runtimeOnly, 'runtime')
+        }
+        if (project.configurations.findByName('provided') != null) {
+            addDependency(project.configurations.provided, 'provided')
+        }
+        if (project.configurations.findByName('apk') != null) {
+            addDependency(project.configurations.apk, 'runtime')
+        }
     }
 }
 
